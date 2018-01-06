@@ -1,0 +1,29 @@
+{
+  "name": "ng-mock",
+  "version": "0.0.1",
+  "description": "An easy way to mock your Angular elements",
+  "author": "Sven Roettering",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sroettering/ng-mock.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "devDependencies": {
+    "@angular/core": "^4.2.4",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.0.2",
+    "typescript": "^2.1.4",
+    "zone.js": "^0.8.4"
+  },
+  "keywords": [
+    "angular",
+    "angular4",
+    "angular5",
+    "mocks",
+    "mocking"
+  ]
+}
