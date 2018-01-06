@@ -1,1 +1,54 @@
 # ng-mock
+
+A comprehensive mocking library for Angular.
+
+```
+npm install --save-dev ng-mock
+```
+
+## Currently Supported Angular Elements
+
+- [ ] Class
+- [x] Component (since 0.0.1)
+- [ ] Directive
+- [ ] Pipe
+- [ ] Service
+- [ ] Guard
+- [ ] Module
+
+## Usage
+
+Just call the `Mock()` function with your desired class and let ng-mock do the magic.
+
+## Examples
+
+## Mocking Components
+```typescript
+import {async, TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import Mock from 'ng-mock';
+
+import { MyComplexComponent } from "./my-complex/my-complex.component";
+
+describe('AppComponent', () => {
+  
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        Mock(MyComplexComponent),
+      ],
+    }).compileComponents();
+  }));
+
+  it('should create the app', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
+});
+```
+
+## How does mocking actually work?
+
+// TODO
