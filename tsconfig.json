@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "noImplicitAny": false,
     "module": "commonjs",
     "target": "es5",
@@ -7,7 +8,11 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "declaration": true
+    "declaration": true,
+    "lib": [
+      "es2017",
+      "dom"
+    ]
   },
   "exclude": [
     "node_modules"
