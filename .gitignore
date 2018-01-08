@@ -10,3 +10,7 @@ Thumbs.db
 *.js
 *.map
 *.d.ts
+
+# Folders
+.idea
+dist
