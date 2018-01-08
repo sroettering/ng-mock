@@ -1,3 +1,7 @@
+# Work in Progress
+
+This package is a work in progress. DO NOT use it production code.
+
 # ng-mock
 
 A comprehensive mocking library for Angular.
