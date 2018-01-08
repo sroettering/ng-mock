@@ -1,5 +1,5 @@
 {
-  "name": "ng-mock",
+  "name": "ng2-mock",
   "version": "0.0.2",
   "description": "An easy way to mock your Angular elements",
   "main": "./dist/index.js",
@@ -7,10 +7,10 @@
   "author": "Sven Roettering",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sroettering/ng-mock.git"
+    "url": "git://github.com/sroettering/ng2-mock.git"
   },
   "bugs": {
-    "url": "https://github.com/sroettering/ng-mock/issues"
+    "url": "https://github.com/sroettering/ng2-mock/issues"
   },
   "license": "MIT",
   "scripts": {

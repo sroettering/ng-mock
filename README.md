@@ -2,12 +2,12 @@
 
 This package is a work in progress. DO NOT use it production code.
 
-# ng-mock
+# ng2-mock
 
 A comprehensive mocking library for Angular.
 
 ```
-npm install --save-dev ng-mock
+npm install --save-dev ng2-mock
 ```
 
 ## Currently Supported Angular Elements
@@ -30,7 +30,7 @@ Just call the `Mock()` function with your desired class and let ng-mock do the m
 ```typescript
 import {async, TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
-import Mock from 'ng-mock';
+import Mock from 'ng2-mock';
 
 import { MyComplexComponent } from "./my-complex/my-complex.component";
 
