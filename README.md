@@ -13,7 +13,7 @@ npm install --save-dev ng2-mock
 ## Currently Supported Angular Elements
 
 - [x] Component (since 0.0.1)
-- [ ] Pipe
+- [x] Pipe
 - [ ] Directive
 - [ ] Service
 - [ ] Guard

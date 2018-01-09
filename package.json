@@ -1,6 +1,6 @@
 {
   "name": "ng2-mock",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An easy way to mock your Angular elements",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
