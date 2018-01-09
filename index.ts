@@ -1,3 +1,1 @@
-import Mock from './src/mock';
-
-export default Mock;
+export { Mock } from './src/mock';
