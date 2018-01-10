@@ -1,8 +1,7 @@
-import { Type } from '@angular/core';
-import { Component, Pipe } from '@angular/core';
+import {Component, Pipe, Type} from '@angular/core';
 
-import { MockComponent } from './component';
-import { MockPipe } from './pipe';
+import {MockComponent} from './component';
+import {MockPipe} from './pipe';
 
 function isOfType<T>(annotations: any[], type: Type<T>): boolean {
     return annotations && annotations.some(annotation => annotation instanceof type);
@@ -15,8 +14,7 @@ export function MockElement(element: any): any {
     } else if (isOfType(annotations, Pipe)) {
         return MockPipe(element);
     }
-    console.warn('Type is currently not supported by ng2-mock. Returning identity.');
-    return element;
+    throw new TypeError("ng2-mock currently does not support this type");
 }
 
 export function Mock(...elements: any[]): any[] {
