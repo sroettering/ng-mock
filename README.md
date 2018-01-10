@@ -1,10 +1,8 @@
-# Work in Progress
-
-This package is a work in progress. DO NOT use it production code.
+[![NPM version](https://badge.fury.io/js/ng2-mock.svg)](http://badge.fury.io/js/ng2-mock)
 
 # ng2-mock
 
-A comprehensive mocking library for Angular.
+An easy way to mock Angular.
 
 ```
 npm install --save-dev ng2-mock
@@ -21,25 +19,22 @@ npm install --save-dev ng2-mock
 
 ## Usage
 
-Just call the `Mock()` function with your desired class and let ng-mock do the magic.
+Just call the `Mock()` function with your desired class(es) and let ng2-mock do the magic.
 
 ## Examples
 
-## Mocking Components
-```typescript
-import {async, TestBed} from '@angular/core/testing';
-import {AppComponent} from './app.component';
-import Mock from 'ng2-mock';
+Mock() accepts an arbitrary number of supported angular elements as an argument and returns their mocked versions.
 
-import { MyComplexComponent } from "./my-complex/my-complex.component";
+```typescript
+import { Mock } from 'ng2-mock';
 
 describe('AppComponent', () => {
-  
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        Mock(MyComplexComponent),
+        Mock(MyAComponent),
+        Mock(MyBComponent, MyCComponent, APipe),
       ],
     }).compileComponents();
   }));
@@ -51,7 +46,3 @@ describe('AppComponent', () => {
   }));
 });
 ```
-
-## How does mocking actually work?
-
-// TODO
