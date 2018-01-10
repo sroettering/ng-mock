@@ -4,10 +4,6 @@
 
 An easy way to mock Angular.
 
-```
-npm install --save-dev ng2-mock
-```
-
 ## Currently Supported Angular Elements
 
 - [x] Component (since 0.0.1)
@@ -17,11 +13,17 @@ npm install --save-dev ng2-mock
 - [ ] Guard
 - [ ] Module
 
+## Installation
+
+```
+npm install --save-dev ng2-mock
+```
+
 ## Usage
 
 Just call the `Mock()` function with your desired class(es) and let ng2-mock do the magic.
 
-## Examples
+## Example
 
 Mock() accepts an arbitrary number of supported angular elements as an argument and returns their mocked versions.
 
