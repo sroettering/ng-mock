@@ -6,7 +6,7 @@ An easy way to mock Angular.
 
 ## Currently Supported Angular Elements
 
-- [x] Component (since 0.0.1)
+- [x] Component
 - [x] Pipe
 - [ ] Directive
 - [ ] Service
