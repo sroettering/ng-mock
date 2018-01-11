@@ -12,14 +12,16 @@ export function MockComponent(component: any): any {
         outputs: findPropsWithDecoratorType(propertyMetadata, Output),
     };
 
-    class _ {
-    }
+    const c = class {
+    };
+
+    Object.defineProperty(c, 'name', { value: component['name'] });
 
     metadata.outputs.forEach(output => {
-        _.prototype[output] = new EventEmitter<any>();
+        c.prototype[output] = new EventEmitter<any>();
     });
 
-    return Component(metadata)(_ as any);
+    return Component(metadata)(c as any);
 }
 
 const findPropsWithDecoratorType = (props: any = {}, decoratorType: any) => {
