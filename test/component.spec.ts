@@ -1,34 +1,34 @@
-import {Component, EventEmitter, Injectable, Input, Output, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, Output, ViewChild } from '@angular/core';
 import 'reflect-metadata';
 
-import {MockComponent} from '../src/component';
+import { MockComponent } from '../src/component';
 
-@Component({selector: 'empty', template: 'empty template'})
+@Component({ selector: 'empty', template: 'empty template' })
 class EmptyComponent {
 }
 
-@Component({selector: 'i-comp', template: 'i-component template'})
+@Component({ selector: 'i-comp', template: 'i-component template' })
 class IComponent {
     @Input() input: any;
 }
 
-@Component({selector: 'o-comp', template: 'o-component template'})
+@Component({ selector: 'o-comp', template: 'o-component template' })
 class OComponent {
     @Output() output: any;
 }
 
-@Component({selector: 'oiio-comp', template: 'oiio-component template'})
+@Component({ selector: 'oiio-comp', template: 'oiio-component template' })
 class OIIOComponent {
     @Output() @Input() outputInput: any;
     @Input() @Output() inputOutput: any;
 }
 
-@Component({selector: 'v-comp', template: '<h1></h1>'})
+@Component({ selector: 'v-comp', template: '<h1></h1>' })
 class VComponent {
     @ViewChild('h1') headline: any;
 }
 
-@Component({selector: 's-comp', template: 's-component template'})
+@Component({ selector: 's-comp', template: 's-component template' })
 class SComponent {
     constructor(private service: DummyService) {
     }
