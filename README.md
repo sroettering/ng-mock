@@ -8,7 +8,7 @@ An easy way to mock Angular.
 
 - [x] Component
 - [x] Pipe
-- [ ] Directive
+- [x] Directive
 - [ ] Service
 - [ ] Guard
 - [ ] Module
