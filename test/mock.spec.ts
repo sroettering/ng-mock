@@ -1,5 +1,4 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
-import 'reflect-metadata';
+import { Component, Directive, Pipe, PipeTransform } from '@angular/core';
 
 import { Mock } from '../src/mock';
 
@@ -7,16 +6,21 @@ import { Mock } from '../src/mock';
 // https://stackoverflow.com/a/43532075
 import * as MockComponentFn from '../src/component';
 import * as MockPipeFn from '../src/pipe';
+import * as MockDirectiveFn from '../src/directive';
 
-@Component({ selector: 'empty', template: 'empty template' })
+@Component({ selector: 'empty-component', template: 'empty template' })
 class EmptyComponent {
 }
 
-@Pipe({ name: 'empty' })
+@Pipe({ name: 'empty-pipe' })
 class EmptyPipe implements PipeTransform {
     transform(value: any, ...args: any[]): any {
         return value;
     }
+}
+
+@Directive({ selector: 'empty-directive' })
+class EmptyDirective {
 }
 
 describe('Mock function', () => {
@@ -33,6 +37,24 @@ describe('Mock function', () => {
         const mockedElements: Array<any> = Mock(EmptyPipe);
         expect(mockedElements.length).toBe(1);
         expect(spyPipe).toHaveBeenCalled();
+    });
+
+    it('should detect a Directive type', () => {
+        const spyDirective = spyOn(MockDirectiveFn, 'MockDirective');
+        const mockedElements: Array<any> = Mock(EmptyDirective);
+        expect(mockedElements.length).toBe(1);
+        expect(spyDirective).toHaveBeenCalled();
+    });
+
+    it('should accept mixed inputs', () => {
+        const spyComponent = spyOn(MockComponentFn, 'MockComponent');
+        const spyPipe = spyOn(MockPipeFn, 'MockPipe');
+        const spyDirective = spyOn(MockDirectiveFn, 'MockDirective');
+        const mockedElements: Array<any> = Mock(EmptyComponent, EmptyPipe, EmptyDirective);
+        expect(mockedElements.length).toBe(3);
+        expect(spyComponent).toHaveBeenCalled();
+        expect(spyPipe).toHaveBeenCalled();
+        expect(spyDirective).toHaveBeenCalled();
     });
 
     it('should throw an error for unknown types', () => {

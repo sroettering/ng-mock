@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Injectable, Input, Output, ViewChild } from '@angular/core';
-import 'reflect-metadata';
 
+import { annotations } from '../src/util/reflection';
 import { MockComponent } from '../src/component';
 
 @Component({ selector: 'empty', template: 'empty template' })
@@ -30,8 +30,7 @@ class VComponent {
 
 @Component({ selector: 's-comp', template: 's-component template' })
 class SComponent {
-    constructor(private service: DummyService) {
-    }
+    constructor(private service: DummyService) {}
 }
 
 @Injectable()
@@ -42,57 +41,57 @@ describe('Mocking a Component', () => {
 
     it('should mock EmptyComponent', () => {
         const mockedComponent = MockComponent(EmptyComponent);
-        const annotations = Reflect.getMetadata('annotations', mockedComponent);
+        const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('EmptyComponent');
-        expect(annotations[0].selector).toBe('empty');
-        expect(annotations[0].template).toBe('');
+        expect(annotationMetadata[0].selector).toBe('empty');
+        expect(annotationMetadata[0].template).toBe('');
     });
 
     it('should mock IComponent', () => {
         const mockedComponent = MockComponent(IComponent);
-        const annotations = Reflect.getMetadata('annotations', mockedComponent);
+        const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('IComponent');
-        expect(annotations[0].selector).toBe('i-comp');
-        expect(annotations[0].template).toBe('');
-        expect(annotations[0].inputs).toEqual(['input']);
+        expect(annotationMetadata[0].selector).toBe('i-comp');
+        expect(annotationMetadata[0].template).toBe('');
+        expect(annotationMetadata[0].inputs).toEqual(['input']);
     });
 
     it('should mock OComponent', () => {
         const mockedComponent = MockComponent(OComponent);
-        const annotations = Reflect.getMetadata('annotations', mockedComponent);
+        const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('OComponent');
-        expect(annotations[0].selector).toBe('o-comp');
-        expect(annotations[0].template).toBe('');
-        expect(annotations[0].outputs).toEqual(['output']);
+        expect(annotationMetadata[0].selector).toBe('o-comp');
+        expect(annotationMetadata[0].template).toBe('');
+        expect(annotationMetadata[0].outputs).toEqual(['output']);
         expect(mockedComponent.prototype['output'] instanceof EventEmitter).toBeTruthy();
     });
 
     it('should mock OIIOComponent', () => {
         const mockedComponent = MockComponent(OIIOComponent);
-        const annotations = Reflect.getMetadata('annotations', mockedComponent);
+        const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('OIIOComponent');
-        expect(annotations[0].selector).toBe('oiio-comp');
-        expect(annotations[0].template).toBe('');
-        expect(annotations[0].inputs).toEqual(['outputInput', 'inputOutput']);
-        expect(annotations[0].outputs).toEqual(['outputInput', 'inputOutput']);
+        expect(annotationMetadata[0].selector).toBe('oiio-comp');
+        expect(annotationMetadata[0].template).toBe('');
+        expect(annotationMetadata[0].inputs).toEqual(['outputInput', 'inputOutput']);
+        expect(annotationMetadata[0].outputs).toEqual(['outputInput', 'inputOutput']);
         expect(mockedComponent.prototype['outputInput'] instanceof EventEmitter).toBeTruthy();
         expect(mockedComponent.prototype['inputOutput'] instanceof EventEmitter).toBeTruthy();
     });
 
     it('should mock VComponent', () => {
         const mockedComponent = MockComponent(VComponent);
-        const annotations = Reflect.getMetadata('annotations', mockedComponent);
+        const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('VComponent');
-        expect(annotations[0].selector).toBe('v-comp');
-        expect(annotations[0].template).toBe('');
+        expect(annotationMetadata[0].selector).toBe('v-comp');
+        expect(annotationMetadata[0].template).toBe('');
     });
 
     it('should mock SComponent', () => {
         const mockedComponent = MockComponent(SComponent);
-        const annotations = Reflect.getMetadata('annotations', mockedComponent);
+        const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('SComponent');
-        expect(annotations[0].selector).toBe('s-comp');
-        expect(annotations[0].template).toBe('');
+        expect(annotationMetadata[0].selector).toBe('s-comp');
+        expect(annotationMetadata[0].template).toBe('');
         // TODO check constructor parameters
     });
 });
