@@ -1,11 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import 'reflect-metadata';
+
+import { annotations } from './util/reflection';
 
 export function MockPipe(pipe: any): any {
-    const annotations = Reflect.getOwnMetadata('annotations', pipe);
+    const annotationMetadata = annotations(pipe);
 
     const metadata = {
-        name: annotations[0].name
+        name: annotationMetadata[0].name
     };
 
     class _ implements PipeTransform {
