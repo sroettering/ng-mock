@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Injectable, Input, Output, ViewChild } from '@angular/core';
+import {Component, EventEmitter, Injectable, Input, Output, ViewChild} from '@angular/core';
 
-import { annotations } from '../src/util/reflection';
-import { MockComponent } from '../src/component';
+import {annotations} from '../src/util/reflection';
+import {MockComponent} from '../src/component';
 
 @Component({ selector: 'empty', template: 'empty template' })
 class EmptyComponent {
@@ -35,6 +35,22 @@ class SComponent {
 
 @Injectable()
 class DummyService {
+}
+
+@Component({selector: 'e-comp', template: 'e-comp template', exportAs: 'other-selector'})
+class EComponent {
+}
+
+@ClassDecorator
+@Component({selector: 'd-comp', template: 'd-comp template'})
+@OtherClassDecorator
+class DComponent {
+}
+
+function ClassDecorator(target) {
+}
+
+function OtherClassDecorator(target) {
 }
 
 describe('Mocking a Component', () => {
@@ -93,5 +109,23 @@ describe('Mocking a Component', () => {
         expect(annotationMetadata[0].selector).toBe('s-comp');
         expect(annotationMetadata[0].template).toBe('');
         // TODO check constructor parameters
+    });
+
+    it('should mock EComponent', () => {
+        const mockedComponent = MockComponent(EComponent);
+        const annotationMetadata = annotations(mockedComponent);
+        expect(mockedComponent['name']).toBe('EComponent');
+        expect(annotationMetadata[0].selector).toBe('e-comp');
+        expect(annotationMetadata[0].template).toBe('');
+        expect(annotationMetadata[0].exportAs).toBe('other-selector');
+    });
+
+    it('should mock DComponent', () => {
+        const mockedComponent = MockComponent(DComponent);
+        const annotationMetadata = annotations(mockedComponent);
+        expect(mockedComponent['name']).toBe('DComponent');
+        expect(annotationMetadata[0] instanceof Component).toBeTruthy();
+        expect(annotationMetadata[0].selector).toBe('d-comp');
+        expect(annotationMetadata[0].template).toBe('');
     });
 });
