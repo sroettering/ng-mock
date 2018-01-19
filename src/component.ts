@@ -9,10 +9,10 @@ export function MockComponent(component: any): any {
 
     const metadata = {
         selector: annotationMetadata[0].selector,
+        exportAs: annotationMetadata[0].exportAs,
         template: '',
         inputs: propertiesWithDecoratorType(propertyMetadata, Input),
         outputs: propertiesWithDecoratorType(propertyMetadata, Output),
-        exportAs: annotationMetadata[0].exportAs,
     };
 
     const c = class {
