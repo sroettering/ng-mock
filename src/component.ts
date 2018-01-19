@@ -1,13 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
-import { annotations, propertyDecorators, propertiesWithDecoratorType } from './util/reflection';
+import {annotations, propertiesWithDecoratorType, propertyDecorators} from './util/reflection';
 
 export function MockComponent(component: any): any {
-    const annotationMetadata = annotations(component);
+    const annotationMetadata = annotations(component)
+        .filter(annotation => annotation instanceof Component);
     const propertyMetadata = propertyDecorators(component);
 
     const metadata = {
         selector: annotationMetadata[0].selector,
+        exportAs: annotationMetadata[0].exportAs,
         template: '',
         inputs: propertiesWithDecoratorType(propertyMetadata, Input),
         outputs: propertiesWithDecoratorType(propertyMetadata, Output),
