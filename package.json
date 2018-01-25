@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "@angular/core": "^5.2.0",
-    "reflect-metadata": "^0.1.10",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "^5.5.6",
-    "typescript": "^2.3.3",
+    "typescript": "^2.6.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
