@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Injectable, Input, Output, ViewChild } from '@angular/core';
+import { MockComponent } from '../src/component';
 
 import { annotations } from '../src/util/reflection';
-import { MockComponent } from '../src/component';
 
 @Component({ selector: 'empty', template: 'empty template' })
 class EmptyComponent {
@@ -125,7 +125,6 @@ describe('Mocking a Component', () => {
     });
 
     it('should mock DComponent', () => {
-        console.log(Object.getOwnPropertyDescriptors(DComponent));
         const mockedComponent = MockComponent(DComponent);
         const annotationMetadata = annotations(mockedComponent);
         expect(mockedComponent['name']).toBe('DComponent');

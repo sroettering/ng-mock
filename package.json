@@ -1,6 +1,6 @@
 {
   "name": "ng2-mock",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "An easy way to mock your Angular elements",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,7 +15,6 @@
   "license": "MIT",
   "keywords": [
     "angular",
-    "angular4",
     "angular5",
     "mocks",
     "mocking"
