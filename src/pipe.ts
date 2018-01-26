@@ -1,10 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-import {annotations} from './util/reflection';
+import { annotations } from './util/reflection';
 
 export function MockPipe(pipe: any): any {
-    const annotationMetadata = annotations(pipe)
-        .filter(annotation => annotation instanceof Pipe);
+    const annotationMetadata = annotations(pipe);
 
     const metadata = {
         name: annotationMetadata[0].name

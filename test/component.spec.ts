@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Injectable, Input, Output, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Injectable, Input, Output, ViewChild } from '@angular/core';
+import { MockComponent } from '../src/component';
 
-import {annotations} from '../src/util/reflection';
-import {MockComponent} from '../src/component';
+import { annotations } from '../src/util/reflection';
 
 @Component({ selector: 'empty', template: 'empty template' })
 class EmptyComponent {
@@ -41,16 +41,20 @@ class DummyService {
 class EComponent {
 }
 
-@ClassDecorator
+@ClassDecorator()
 @Component({selector: 'd-comp', template: 'd-comp template'})
-@OtherClassDecorator
+@OtherClassDecorator()
 class DComponent {
 }
 
-function ClassDecorator(target) {
+function ClassDecorator() {
+    return (target) => {
+    };
 }
 
-function OtherClassDecorator(target) {
+function OtherClassDecorator() {
+    return (target) => {
+    };
 }
 
 describe('Mocking a Component', () => {

@@ -1,4 +1,4 @@
-import { Component, Directive, Pipe, Type } from '@angular/core';
+import { Component, Directive, Pipe } from '@angular/core';
 
 import { isOfType } from './util/reflection';
 import { MockComponent } from './component';

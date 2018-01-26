@@ -29,5 +29,7 @@ export function propertiesWithDecoratorType(props: any = {}, decoratorType: any)
 
 export function isOfType<T>(element: any, type: Type<T>): boolean {
     const annotationMetadata = annotations(element);
-    return annotationMetadata && annotationMetadata.some(annotation => annotation instanceof type);
+    return annotationMetadata && annotationMetadata.some(annotation => {
+        return type.prototype.ngMetadataName === Object.getPrototypeOf(annotation).ngMetadataName;
+    });
 }

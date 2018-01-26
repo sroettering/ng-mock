@@ -1,10 +1,9 @@
-import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import { Directive, EventEmitter, Input, Output } from '@angular/core';
 
-import {annotations, propertiesWithDecoratorType, propertyDecorators} from './util/reflection';
+import { annotations, propertiesWithDecoratorType, propertyDecorators } from './util/reflection';
 
 export function MockDirective(directive: any): any {
-    const annotationMetadata = annotations(directive)
-        .filter(annotation => annotation instanceof Directive);
+    const annotationMetadata = annotations(directive);
     const propertyMetadata = propertyDecorators(directive);
 
     const metadata = {

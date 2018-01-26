@@ -2,7 +2,9 @@
 
 # ng2-mock
 
-An easy way to mock Angular.
+An easy way to mock your Angular elements.
+
+_Note_: If you are using Angular < 5 use v0.0.7 of ng2-mock
 
 ## Currently Supported Angular Elements
 
