@@ -1,12 +1,12 @@
-import { Component, Directive, Pipe, PipeTransform } from '@angular/core';
+import { Component, Directive, Injectable, Pipe, PipeTransform } from '@angular/core';
 
 import { Mock } from '../src/mock';
-
 // import like this for spyOn to work
 // https://stackoverflow.com/a/43532075
 import * as MockComponentFn from '../src/component';
 import * as MockPipeFn from '../src/pipe';
 import * as MockDirectiveFn from '../src/directive';
+import * as MockServiceFn from '../src/service';
 
 @Component({ selector: 'empty-component', template: 'empty template' })
 class EmptyComponent {
@@ -21,6 +21,10 @@ class EmptyPipe implements PipeTransform {
 
 @Directive({ selector: 'empty-directive' })
 class EmptyDirective {
+}
+
+@Injectable()
+class EmptyService {
 }
 
 describe('Mock function', () => {
@@ -44,6 +48,13 @@ describe('Mock function', () => {
         const mockedElements: Array<any> = Mock(EmptyDirective);
         expect(mockedElements.length).toBe(1);
         expect(spyDirective).toHaveBeenCalled();
+    });
+
+    it('should detect an Injectable type', () => {
+        const spyService = spyOn(MockServiceFn, 'MockService');
+        const mockedElements: Array<any> = Mock(EmptyService);
+        expect(mockedElements.length).toBe(1);
+        expect(spyService).toHaveBeenCalled();
     });
 
     it('should accept mixed inputs', () => {
