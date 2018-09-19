@@ -27,6 +27,6 @@ export function MockDirective(directive: any): any {
 
 const findPropsWithDecoratorType = (props: any = {}, decoratorType: any) => {
     const entries = Object.entries(props);
-    return entries.filter(entry => entry[1].some(decorator => decorator instanceof decoratorType))
+    return entries.filter(entry => (entry[1] as any[]).some(decorator => decorator instanceof decoratorType))
         .map(entry => entry[0]);
 };

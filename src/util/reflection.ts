@@ -22,8 +22,7 @@ export function propertyDecorators(clazz: any): any {
 export function propertiesWithDecoratorType(props: any = {}, decoratorType: any): string[] {
     const entries = Object.entries(props);
     return entries
-        .filter(entry => entry[1]
-        .some(decorator => decorator instanceof decoratorType))
+        .filter(entry => (entry[1] as any[]).some(decorator => decorator instanceof decoratorType))
         .map(entry => entry[0]);
 }
 
