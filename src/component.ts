@@ -6,7 +6,13 @@ export function MockComponent(component: any): any {
     let metadata;
 
     if (typeof component === 'object') {
-        metadata = component;
+        metadata = {
+            selector: component.selector,
+            exportAs: component.exportAs,
+            template: component.template || '',
+            inputs: component.inputs || [],
+            outputs: component.outputs || [],
+        };
     } else {
         const annotationMetadata = annotations(component);
         const propertyMetadata = propertyDecorators(component);
