@@ -59,6 +59,21 @@ function OtherClassDecorator() {
 
 describe('Mocking a Component', () => {
 
+    it('should mock an anonymous component', () => {
+        const mockedComponent = MockComponent({
+            selector: 'ng2-test-selector',
+            inputs: ['counter'],
+            outputs: ['click'],
+            template: '<main></main>',
+        });
+        const annotationMetadata = annotations(mockedComponent);
+        expect(mockedComponent['name']).toBe('TestComponent');
+        expect(annotationMetadata[0].selector).toBe('ng2-test-selector');
+        expect(annotationMetadata[0].inputs).toEqual(['counter']);
+        expect(annotationMetadata[0].outputs).toEqual(['click']);
+        expect(annotationMetadata[0].template).toBe('<main></main>');
+    });
+
     it('should mock EmptyComponent', () => {
         const mockedComponent = MockComponent(EmptyComponent);
         const annotationMetadata = annotations(mockedComponent);
